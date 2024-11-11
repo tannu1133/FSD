@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Basic reset for margins and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 20px;
+            row-gap: 15px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        textarea {
+            grid-column: 1 / 3;
+            resize: none;
+        }
+
+        .button-container {
+            grid-column: 1 / 3;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="reset"] {
+            background-color: #f44336;
+            color: white;
+        }
+
+        button[type="reset"]:hover {
+            background-color: #d32f2f;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            // Get form inputs
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+            const dob = document.getElementById("dob").value;
+            const tShirtSize = document.getElementById("t-shirtsize").value;
+            const password = document.getElementById("password").value;
+            const colour = document.getElementById("colour").value;
+            const bio = document.getElementById("bio").value;
+
+            // Validate name
+            if (name === "") {
+                alert("Name is required.");
+                return false;
+            }
+
+            // Validate age
+            if (age === "" || age <= 0) {
+                alert("Please enter a valid age.");
+                return false;
+            }
+
+            // Validate date of birth
+            if (dob === "") {
+                alert("Date of birth is required.");
+                return false;
+            }
+
+            // Validate T-shirt size
+            if (tShirtSize === "") {
+                alert("T-shirt size is required.");
+                return false;
+            }
+
+            // Validate password
+            if (password === "" || password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+            // Validate favourite colour
+            if (colour === "") {
+                alert("Favourite colour is required.");
+                return false;
+            }
+
+            // Validate bio
+            if (bio === "") {
+                alert("Please tell us something about yourself.");
+                return false;
+            }
+
+            // If all validation passes, submit the form
+            alert("Form submitted successfully!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Enter your Details here</h1>
+        <form class="form-grid" onsubmit="return validateForm();">
+            <div>
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="Enter your name">
+            </div>
+            
+            <div>
+                <label for="age">Age</label>
+                <input id="age" type="number" placeholder="Enter your age">
+            </div>
+
+            <div>
+                <label for="dob">Date of Birth</label>
+                <input id="dob" type="date" placeholder="Enter your date of birth">
+            </div>
+
+            <div>
+                <label for="t-shirtsize">T-shirt size</label>
+                <input id="t-shirtsize" type="text" placeholder="Enter your t-shirt size">
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Enter your password">
+            </div>
+
+            <div>
+                <label for="t-shirt">Select T-shirt size</label>
+                <select id="t-shirt">
+                    <option value="S">Small</option>
+                    <option value="L">Large</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="colour">Your Favourite Colour</label>
+                <input id="colour" type="text" placeholder="Enter your favourite colour">
+            </div>
+
+            <div>
+                <label for="bio">Tell us about yourself</label>
+                <textarea id="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+            </div>
+
+            <div class="button-container">
+                <button type="reset">Reset</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
